@@ -34,13 +34,6 @@ class MainActivity : AppCompatActivity() {
                         adapter = newsAdapter
                         newsAdapter.notifyDataSetChanged()
                     }
-
-//                    val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
-//                    linearLayout.setOnClickListener {
-//                        val openURL = Intent(android.content.Intent.ACTION_VIEW)
-//                        openURL.data = Uri.parse(getUri())
-//                    }
-
                 }
             }
 

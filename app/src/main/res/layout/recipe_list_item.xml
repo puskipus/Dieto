@@ -28,17 +28,26 @@
                 android:textColor="@color/black"
                 android:maxLines="3">
             </TextView>
+
             <TextView
+                android:id="@+id/text_source"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/text_source"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/purple_500"
+                android:layout_marginTop="6dp"
                 android:maxLines="1"
-                android:layout_marginTop="6dp">
-            </TextView>
+                android:textColor="@color/purple_500"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/checkBoxSaved"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/selector"
+                android:buttonTint="@android:color/holo_red_light"/>
+
         </LinearLayout>
+
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"

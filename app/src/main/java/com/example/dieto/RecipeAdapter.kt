@@ -6,6 +6,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -22,6 +23,7 @@ class RecipeAdapter(val dataNews: List<HitsItem?>?) : RecyclerView.Adapter<Recip
         val imgNews = view.findViewById<ImageView>(R.id.img_headline)
         val title = view.findViewById<TextView>(R.id.text_title)
         val source = view.findViewById<TextView>(R.id.text_source)
+        val save = view.findViewById<CheckBox>(R.id.checkBoxSaved)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -45,6 +47,14 @@ class RecipeAdapter(val dataNews: List<HitsItem?>?) : RecyclerView.Adapter<Recip
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.setData(Uri.parse(uri))
                 holder.itemView.context.startActivity(intent)
+            }
+        }
+
+        holder.save.setOnCheckedChangeListener { checkBox, isChecked ->
+            if (isChecked) {
+                Toast.makeText(holder.itemView.context, "add", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(holder.itemView.context, "remove", Toast.LENGTH_SHORT).show()
             }
         }
     }
