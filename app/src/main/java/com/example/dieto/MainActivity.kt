@@ -1,11 +1,15 @@
 package com.example.dieto
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dieto.Api.ApiConfig
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,6 +34,13 @@ class MainActivity : AppCompatActivity() {
                         adapter = newsAdapter
                         newsAdapter.notifyDataSetChanged()
                     }
+
+//                    val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
+//                    linearLayout.setOnClickListener {
+//                        val openURL = Intent(android.content.Intent.ACTION_VIEW)
+//                        openURL.data = Uri.parse(getUri())
+//                    }
+
                 }
             }
 
@@ -38,5 +49,11 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        val floatButton = findViewById<FloatingActionButton>(R.id.floatButton)
+        floatButton.setOnClickListener {
+            val intent = Intent(this, SavedRecipe::class.java)
+            startActivity(intent)
+        }
     }
 }
