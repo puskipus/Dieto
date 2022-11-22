@@ -17,8 +17,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class RecipeAdapter(val dataNews: List<HitsItem?>?) : RecyclerView.Adapter<RecipeAdapter.MyViewHolder>() {
+    var database : DatabaseReference = FirebaseDatabase.getInstance().getReference("Recipe")
+
     class MyViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         val imgNews = view.findViewById<ImageView>(R.id.img_headline)
         val title = view.findViewById<TextView>(R.id.text_title)
@@ -52,9 +56,11 @@ class RecipeAdapter(val dataNews: List<HitsItem?>?) : RecyclerView.Adapter<Recip
 
         holder.save.setOnCheckedChangeListener { checkBox, isChecked ->
             if (isChecked) {
-                Toast.makeText(holder.itemView.context, "add", Toast.LENGTH_SHORT).show()
+                val data = RecipeSaved(dataNews?.get(position)?.recipe?.label, dataNews?.get(position)?.recipe?.dietLabels
+                    .toString().replace("[", "").replace("]", ""), dataNews?.get(position)?.recipe?.image)
+                database.child(dataNews?.get(position)?.recipe?.label.toString()).setValue(data)
             } else {
-                Toast.makeText(holder.itemView.context, "remove", Toast.LENGTH_SHORT).show()
+                database.child(dataNews?.get(position)?.recipe?.label.toString()).removeValue()
             }
         }
     }
