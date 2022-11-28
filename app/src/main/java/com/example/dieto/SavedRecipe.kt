@@ -33,7 +33,7 @@ class SavedRecipe : AppCompatActivity() {
                         savedRecipeList.add(recipe!!)
                     }
 
-                    recipeRecyclerView.adapter = SavedRecipeAdapter(savedRecipeList)
+                    recipeRecyclerView.adapter = SavedRecipeAdapter(savedRecipeList){index -> deleteItem(index)}
                 }
             }
 
@@ -42,6 +42,12 @@ class SavedRecipe : AppCompatActivity() {
             }
 
         })
+    }
+
+    fun deleteItem(index : Int) {
+        if (::savedRecipeList.isInitialized && ::recipeRecyclerView.isInitialized) {
+            savedRecipeList.removeAt(index)
+        }
     }
 }
 

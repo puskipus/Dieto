@@ -8,15 +8,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
-class SavedRecipeAdapter(private val savedRecipeList : ArrayList<RecipeSaved>) : RecyclerView.Adapter<SavedRecipeAdapter.MyViewHolder>() {
+class SavedRecipeAdapter(private val savedRecipeList : ArrayList<RecipeSaved>, val onClickDelete: (Int) -> Unit) : RecyclerView.Adapter<SavedRecipeAdapter.MyViewHolder>() {
+    var database : DatabaseReference = FirebaseDatabase.getInstance().getReference("Recipe")
+    private var listData = savedRecipeList
 
-
-    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imgNews = view.findViewById<ImageView>(R.id.img_headline)
         val title = view.findViewById<TextView>(R.id.text_title)
         val source = view.findViewById<TextView>(R.id.text_source)
-        val save = view.findViewById<CheckBox>(R.id.checkBoxSaved)
+        val delete = view.findViewById<ImageView>(R.id.btn_delete)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -35,9 +39,20 @@ class SavedRecipeAdapter(private val savedRecipeList : ArrayList<RecipeSaved>) :
             .load(currentItem.image)
             .error(R.drawable.ic_launcher_background )
             .into(holder.imgNews)
+
+        holder.delete.setOnClickListener {
+            deleteItem(position)
+            database.child(currentItem?.label.toString()).removeValue()
+        }
+    }
+
+    private fun deleteItem(position: Int) {
+        listData.removeAt(position)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-        return savedRecipeList.size
+        return listData.size
     }
+
 }
