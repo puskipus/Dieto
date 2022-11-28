@@ -1,10 +1,8 @@
 package com.example.dieto
 
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val news = findViewById<RecyclerView>(R.id.recycler_main)
+        val recipe = findViewById<RecyclerView>(R.id.recycler_main)
 
         ApiConfig.getService().getRecipe("chicken").enqueue(object : Callback<RecipeResponse> {
             override fun onResponse(call: Call<RecipeResponse>, response: Response<RecipeResponse>) {
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity() {
                     println(responseCode)
                     val dataNews = responseCode?.hits
                     val newsAdapter = RecipeAdapter(dataNews)
-                    news.apply {
+                    recipe.apply {
                         layoutManager = LinearLayoutManager(this@MainActivity)
                         setHasFixedSize(true)
                         adapter = newsAdapter
