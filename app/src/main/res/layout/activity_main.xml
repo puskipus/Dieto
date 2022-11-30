@@ -8,20 +8,23 @@
     tools:context=".MainActivity">
 
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="30dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="30dp"
         android:background="@android:color/transparent"
-        app:rippleColor="@color/white"
-        android:src="@drawable/bookmark" />
+        android:src="@drawable/bookmark"
+        app:rippleColor="@color/white" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
@@ -39,8 +42,10 @@
 
         android:id="@+id/recycler_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="655dp"
+        android:layout_below="@+id/cardSearch"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="7dp"
         android:layout_marginBottom="0dp"
         tools:listitem="@layout/recipe_list_item">
 
