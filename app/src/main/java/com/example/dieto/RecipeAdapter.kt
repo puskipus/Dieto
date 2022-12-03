@@ -50,7 +50,7 @@ class RecipeAdapter(val dataRecipe: List<HitsItem?>?) : RecyclerView.Adapter<Rec
         holder.save.setOnCheckedChangeListener { checkBox, isChecked ->
             if (isChecked) {
                 val data = RecipeSaved(dataRecipe?.get(position)?.recipe?.label, dataRecipe?.get(position)?.recipe?.dietLabels
-                    .toString().replace("[", "").replace("]", ""), dataRecipe?.get(position)?.recipe?.image)
+                    .toString().replace("[", "").replace("]", ""), dataRecipe?.get(position)?.recipe?.image, dataRecipe?.get(position)?.recipe?.url ,"")
                 database.child(dataRecipe?.get(position)?.recipe?.label.toString()).setValue(data)
             } else {
                 database.child(dataRecipe?.get(position)?.recipe?.label.toString()).removeValue()
