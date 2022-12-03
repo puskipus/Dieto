@@ -39,6 +39,34 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/text_notes"
+                android:text="Notes :"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:maxLines="1"
+                android:textColor="@color/purple_500"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/text_notes_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:maxLines="1"
+                android:textColor="@color/purple_500"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/update_btn"
+                android:layout_width="68dp"
+                android:layout_height="31dp"
+                android:text="Update"
+                android:textSize="8dp" />
+
             <ImageView
                 android:id="@+id/btn_delete"
                 android:layout_width="23dp"

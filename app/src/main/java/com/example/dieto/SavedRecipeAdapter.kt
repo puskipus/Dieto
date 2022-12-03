@@ -1,8 +1,11 @@
 package com.example.dieto
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
@@ -20,6 +23,8 @@ class SavedRecipeAdapter(private val savedRecipeList : ArrayList<RecipeSaved>, v
         val title = view.findViewById<TextView>(R.id.text_title)
         val source = view.findViewById<TextView>(R.id.text_source)
         val delete = view.findViewById<ImageView>(R.id.btn_delete)
+        val notes = view.findViewById<TextView>(R.id.text_notes_value)
+        val update = view.findViewById<Button>(R.id.update_btn)
 
     }
 
@@ -34,6 +39,7 @@ class SavedRecipeAdapter(private val savedRecipeList : ArrayList<RecipeSaved>, v
         holder.title.text = currentItem?.label
         holder.source.text = currentItem.dietLabels
             .toString().replace("[", "").replace("]", "")
+        holder.notes.text = currentItem?.notes
 
         Glide.with(holder.imgNews)
             .load(currentItem.image)
@@ -43,6 +49,25 @@ class SavedRecipeAdapter(private val savedRecipeList : ArrayList<RecipeSaved>, v
         holder.delete.setOnClickListener {
             deleteItem(position)
             database.child(currentItem?.label.toString()).removeValue()
+        }
+
+        holder.update.setOnClickListener {
+            updateItem(
+                currentItem?.label.toString(),
+                currentItem.dietLabels.toString(),
+                currentItem.image.toString(),
+                currentItem.url.toString(),
+                holder.notes.text.toString()
+            )
+        }
+
+        holder.itemView.setOnClickListener {
+            val uri = currentItem?.url
+            if (uri != null) {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.setData(Uri.parse(uri))
+                holder.itemView.context.startActivity(intent)
+            }
         }
     }
 
@@ -55,4 +80,9 @@ class SavedRecipeAdapter(private val savedRecipeList : ArrayList<RecipeSaved>, v
         return listData.size
     }
 
+    private fun updateItem(label : String, dietLabels : String, image : String, url : String, notes : String) {
+        val dbUpdt = FirebaseDatabase.getInstance().getReference("Recipe").child(label)
+        val updtRecipe = RecipeSaved(label, dietLabels, image, url, notes)
+        dbUpdt.setValue(updtRecipe)
+    }
 }
