@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1052092080735",
+    "firebase_url": "https://projekakhirpsi-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "projekakhirpsi",
+    "storage_bucket": "projekakhirpsi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052092080735:android:572ae7ee6392d4a437f1ea",
+        "android_client_info": {
+          "package_name": "com.example.dieto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052092080735-nviaboq19lupdshh1uuq3gjuv3aqsfn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm_KDxH_vlAn60DIS6K0wTDv5TV6IzefQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052092080735-nviaboq19lupdshh1uuq3gjuv3aqsfn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052092080735:android:7e24d33aed774ccd37f1ea",
+        "android_client_info": {
+          "package_name": "com.example.projekakhirpsi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052092080735-nviaboq19lupdshh1uuq3gjuv3aqsfn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm_KDxH_vlAn60DIS6K0wTDv5TV6IzefQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052092080735-nviaboq19lupdshh1uuq3gjuv3aqsfn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

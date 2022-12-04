@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val recipe = findViewById<RecyclerView>(R.id.recycler_main)
 
         searchView = findViewById(R.id.search_view)

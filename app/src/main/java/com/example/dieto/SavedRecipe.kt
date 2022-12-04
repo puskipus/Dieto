@@ -25,7 +25,7 @@ class SavedRecipe : AppCompatActivity() {
 
     private fun getUserData() {
         dbref = FirebaseDatabase.getInstance().getReference("Recipe")
-        dbref.addValueEventListener(object : ValueEventListener{
+        dbref.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (recipeSnapshot in snapshot.children) {

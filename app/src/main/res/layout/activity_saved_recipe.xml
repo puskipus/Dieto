@@ -12,8 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Saved Recipe"
-        android:textAlignment="center"
-        android:textSize="40dp" />
+        android:padding="25dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textAlignment="textStart"
+        android:textSize="40dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_saved_recipe"
