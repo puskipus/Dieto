@@ -1,5 +1,6 @@
 package com.example.dieto
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +9,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.dieto.databinding.ActivitySavedRecipeBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.example.dieto.RecipeAdapter
 
 class SavedRecipeAdapter(private val savedRecipeList : ArrayList<RecipeSaved>, val onClickDelete: (Int) -> Unit) : RecyclerView.Adapter<SavedRecipeAdapter.MyViewHolder>() {
     var database : DatabaseReference = FirebaseDatabase.getInstance().getReference("Recipe")
     private var listData = savedRecipeList
+
+    private lateinit var binding: ActivitySavedRecipeBinding
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imgNews = view.findViewById<ImageView>(R.id.img_headline)
@@ -43,6 +48,7 @@ class SavedRecipeAdapter(private val savedRecipeList : ArrayList<RecipeSaved>, v
         holder.delete.setOnClickListener {
             deleteItem(position)
             database.child(currentItem?.label.toString()).removeValue()
+
         }
     }
 
